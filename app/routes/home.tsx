@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import Counter from "../components/Counter.jsx";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 // export function meta({}: Route.MetaArgs) {
 //   return [
@@ -11,6 +12,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   function handleClick() {
     setCount(count + 1);
@@ -38,6 +40,9 @@ export default function Home() {
     <div className="flex flex-col gap-4 justify-center items-center h-screen">
       <p>First Page</p>
       <Counter handleClick={handleClick} count={count} />
+      <button onClick={() => navigate("/controlled-form")}>
+        Controlled Form
+      </button>
     </div>
   );
 }
