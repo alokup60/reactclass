@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import Counter from "../components/Counter.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // export function meta({}: Route.MetaArgs) {
 //   return [
@@ -15,6 +15,24 @@ export default function Home() {
   function handleClick() {
     setCount(count + 1);
   }
+
+  function checkFunction() {
+    console.log("function called while mounting the page:!");
+  }
+
+  const checkCountFunction = () => {
+    console.log("count function called", count);
+  };
+
+  // checkFunction();
+
+  useEffect(() => {
+    checkFunction();
+  }, []);
+
+  useEffect(() => {
+    checkCountFunction();
+  }, [count]);
 
   return (
     <div className="flex flex-col gap-4 justify-center items-center h-screen">
